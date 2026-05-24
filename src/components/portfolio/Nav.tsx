@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-
-const links = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
-];
+import { useLang } from "@/i18n/LanguageContext";
+import { LanguageToggle } from "./LanguageToggle";
 
 export function Nav() {
+  const { t } = useLang();
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -15,6 +11,13 @@ export function Nav() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const links = [
+    { href: "#about", label: t.nav.about },
+    { href: "#skills", label: t.nav.skills },
+    { href: "#experience", label: t.nav.experience },
+    { href: "#contact", label: t.nav.contact },
+  ];
 
   return (
     <header
@@ -41,12 +44,15 @@ export function Nav() {
             </li>
           ))}
         </ul>
-        <a
-          href="#contact"
-          className="hidden sm:inline-flex items-center gap-2 text-sm font-mono px-4 py-2 rounded-md border border-primary/40 text-primary hover:bg-primary/10 transition-colors"
-        >
-          Get in touch
-        </a>
+        <div className="flex items-center gap-3">
+          <LanguageToggle />
+          <a
+            href="#contact"
+            className="hidden sm:inline-flex items-center gap-2 text-sm font-mono px-4 py-2 rounded-md border border-primary/40 text-primary hover:bg-primary/10 transition-colors"
+          >
+            {t.nav.cta}
+          </a>
+        </div>
       </nav>
     </header>
   );

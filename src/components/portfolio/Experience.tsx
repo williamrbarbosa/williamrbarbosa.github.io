@@ -1,120 +1,34 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { SectionHeading } from "./About";
+import { useLang } from "@/i18n/LanguageContext";
 
-const jobs = [
-  {
-    company: "Janela Digital",
-    role: "Full Stack Engineer",
-    period: "May 2026 — Present",
-    location: "Óbidos, Portugal · On-site",
-    bullets: [
-      "Building and maintaining full stack features across the company's product suite.",
-      "Collaborating with engineering and product teams on new initiatives.",
-    ],
-    stack: ["Node.js", "React", "TypeScript", "PostgreSQL"],
-  },
-  {
-    company: "MayTech.ia",
-    role: "Full Stack Engineer",
-    period: "Aug 2025 — May 2026",
-    location: "Remote · Brazil",
-    bullets: [
-      "Developed backend services and APIs using NestJS with PostgreSQL and Redis.",
-      "Built frontend dashboards in Next.js for operations and sales teams.",
-      "Implemented BullMQ background jobs for automated lead and overdue payment workflows.",
-      "Integrated the Meta Official WhatsApp API for high-volume messaging and template management.",
-      "Built a Kanban-style CRM dashboard improving overdue payment tracking and team productivity.",
-      "Integrated insurance provider APIs to sync customer, policy, and billing data.",
-    ],
-    stack: ["NestJS", "Next.js", "PostgreSQL", "Redis", "BullMQ", "WhatsApp API"],
-  },
-  {
-    company: "Independent Contractor",
-    role: "Full Stack Engineer",
-    period: "Dec 2024 — Aug 2025",
-    location: "Remote · Brazil",
-    bullets: [
-      "Built a road race management platform serving 80k+ simultaneous users during peak registrations.",
-      "Improved performance with Redis caching, drastically reducing DB load under heavy traffic.",
-      "Delivered features for registrations, payments, rankings, and automated certificate generation.",
-      "Developed an insurance collection & CRM platform with NestJS, Next.js, PostgreSQL, Redis, and BullMQ.",
-      "Built a sales commission system integrated with Protheus ERP, automating complex calculations.",
-      "Set up CI/CD, managed Linux servers (Nginx, Docker, PM2, SSL, Cloudflare).",
-    ],
-    stack: ["PHP", "AngularJS", "NestJS", "Next.js", "MySQL", "PostgreSQL", "Redis", "Docker"],
-  },
-  {
-    company: "Rx Redefined",
-    role: "Technical Project Manager",
-    period: "May 2022 — Nov 2024",
-    location: "Remote",
-    bullets: [
-      "Led projects from planning to delivery, translating business needs into technical priorities.",
-      "Coordinated Agile teams using Scrum to improve execution and on-time delivery.",
-      "Supported release processes and CI/CD improvements.",
-      "Contributed to observability initiatives using Datadog.",
-      "Shipped features and fixes in Node.js, React, and PostgreSQL during high-demand periods.",
-    ],
-    stack: ["Scrum", "Node.js", "React", "PostgreSQL", "Datadog", "CI/CD"],
-  },
-  {
-    company: "Recebe Digital",
-    role: "Full Stack Developer",
-    period: "Mar 2021 — May 2022",
-    location: "Remote · Brazil",
-    bullets: [
-      "Built features for a white-label multi-tenant sports platform (running, cycling, MTB).",
-      "Developed backend and frontend in Node.js, PHP, Angular, Next.js, TypeScript.",
-      "Integrated payment systems and financial tools for subscription and event monetization.",
-      "Built APIs for automated WhatsApp athlete notifications.",
-      "Implemented Jest unit testing to improve reliability.",
-    ],
-    stack: ["Node.js", "NestJS", "PHP", "Angular", "Next.js", "Jest"],
-  },
-  {
-    company: "DFranquias",
-    role: "Full Stack Developer",
-    period: "Oct 2021 — Apr 2022",
-    location: "Remote",
-    bullets: [
-      "Built ERP features across financial, inventory, and sales workflows.",
-      "Developed high-performance Point-of-Sale modules for retail.",
-      "Integrated Brazilian electronic invoicing (NF-e) with automated tax compliance.",
-      "Worked with PHP, Symfony, MySQL, Docker, and REST APIs.",
-    ],
-    stack: ["PHP", "Symfony", "MySQL", "Docker", "REST"],
-  },
-  {
-    company: "I-SINC",
-    role: "Full Stack Developer",
-    period: "Jan 2019 — Nov 2021",
-    location: "Brazil",
-    bullets: [
-      "Designed tax analysis and compliance solutions for retail systems.",
-      "Built RESTful APIs in Node.js and web apps in PHP + Angular, containerized with Docker.",
-      "Implemented event-driven architecture with RabbitMQ for async processing.",
-      "Migrated and maintained AWS infrastructure (EC2, S3, RDS, Lambda).",
-      "Reduced response times by approximately 40% through perf optimization.",
-    ],
-    stack: ["Node.js", "PHP", "Angular", "RabbitMQ", "AWS", "Docker"],
-  },
+const meta = [
+  { company: "Janela Digital", period: { en: "May 2026 — Present", pt: "Mai 2026 — Atual" }, stack: ["Node.js", "React", "TypeScript", "PostgreSQL"] },
+  { company: "MayTech.ia", period: { en: "Aug 2025 — May 2026", pt: "Ago 2025 — Mai 2026" }, stack: ["NestJS", "Next.js", "PostgreSQL", "Redis", "BullMQ", "WhatsApp API"] },
+  { company: "Independent Contractor", period: { en: "Dec 2024 — Aug 2025", pt: "Dez 2024 — Ago 2025" }, stack: ["PHP", "AngularJS", "NestJS", "Next.js", "MySQL", "PostgreSQL", "Redis", "Docker"] },
+  { company: "Rx Redefined", period: { en: "May 2022 — Nov 2024", pt: "Mai 2022 — Nov 2024" }, stack: ["Scrum", "Node.js", "React", "PostgreSQL", "Datadog", "CI/CD"] },
+  { company: "Recebe Digital", period: { en: "Mar 2021 — May 2022", pt: "Mar 2021 — Mai 2022" }, stack: ["Node.js", "NestJS", "PHP", "Angular", "Next.js", "Jest"] },
+  { company: "DFranquias", period: { en: "Oct 2021 — Apr 2022", pt: "Out 2021 — Abr 2022" }, stack: ["PHP", "Symfony", "MySQL", "Docker", "REST"] },
+  { company: "I-SINC", period: { en: "Jan 2019 — Nov 2021", pt: "Jan 2019 — Nov 2021" }, stack: ["Node.js", "PHP", "Angular", "RabbitMQ", "AWS", "Docker"] },
 ];
 
 export function Experience() {
+  const { t, lang } = useLang();
   const [active, setActive] = useState(0);
-  const job = jobs[active];
+  const m = meta[active];
+  const j = t.jobs[active];
 
   return (
     <section id="experience" className="py-28 px-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading number="03" title="Where I've worked" />
+        <SectionHeading number="03" title={t.experience.heading} />
 
         <div className="mt-12 grid md:grid-cols-[240px_1fr] gap-8">
           <div className="flex md:flex-col overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-l border-border">
-            {jobs.map((j, i) => (
+            {meta.map((mm, i) => (
               <button
-                key={j.company}
+                key={mm.company}
                 onClick={() => setActive(i)}
                 className={`relative text-left whitespace-nowrap md:whitespace-normal px-4 py-3 font-mono text-sm transition-all ${
                   active === i
@@ -127,7 +41,7 @@ export function Experience() {
                     active === i ? "bg-primary" : "bg-transparent"
                   }`}
                 />
-                {j.company}
+                {mm.company}
               </button>
             ))}
           </div>
@@ -141,14 +55,13 @@ export function Experience() {
               transition={{ duration: 0.25 }}
             >
               <h3 className="text-xl font-display font-semibold">
-                {job.role}{" "}
-                <span className="text-primary">@ {job.company}</span>
+                {j.role} <span className="text-primary">@ {m.company}</span>
               </h3>
               <p className="font-mono text-sm text-muted-foreground mt-1">
-                {job.period} · {job.location}
+                {m.period[lang]} · {j.location}
               </p>
               <ul className="mt-6 space-y-3">
-                {job.bullets.map((b) => (
+                {j.bullets.map((b) => (
                   <li key={b} className="flex gap-3 text-muted-foreground">
                     <span className="text-primary mt-1.5 shrink-0">▹</span>
                     <span className="leading-relaxed">{b}</span>
@@ -156,7 +69,7 @@ export function Experience() {
                 ))}
               </ul>
               <div className="mt-6 flex flex-wrap gap-2">
-                {job.stack.map((s) => (
+                {m.stack.map((s) => (
                   <span
                     key={s}
                     className="text-xs font-mono px-2.5 py-1 rounded-md bg-surface-2 border border-border text-muted-foreground"

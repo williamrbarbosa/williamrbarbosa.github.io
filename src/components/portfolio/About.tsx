@@ -1,44 +1,27 @@
 import { motion } from "motion/react";
-
-const stats = [
-  { value: "7+", label: "Years building" },
-  { value: "80k+", label: "Concurrent users served" },
-  { value: "6", label: "Industries shipped to" },
-  { value: "40%", label: "Avg perf gains" },
-];
+import { useLang } from "@/i18n/LanguageContext";
 
 export function About() {
+  const { t } = useLang();
   return (
     <section id="about" className="py-28 px-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeading number="01" title="About me" />
+        <SectionHeading number="01" title={t.about.heading} />
 
         <div className="grid md:grid-cols-5 gap-12 mt-12">
           <div className="md:col-span-3 space-y-5 text-muted-foreground leading-relaxed">
             <p>
-              I'm a Full Stack Developer with solid experience building and maintaining web
-              applications using <span className="text-foreground">Node.js, React, NestJS, PHP, SQL</span>,
-              and modern frontend/backend architectures.
+              {t.about.p1[0]}<span className="text-foreground">{t.about.p1[1]}</span>{t.about.p1[2]}
             </p>
+            <p>{t.about.p2}</p>
             <p>
-              Over the years I've worked across industries — ERP, education, healthcare,
-              logistics, factories, and sports platforms — which sharpened my adaptability,
-              business sense, and ability to deliver practical solutions in dynamic environments.
+              {t.about.p3[0]}<span className="text-foreground">{t.about.p3[1]}</span>{t.about.p3[2]}
             </p>
-            <p>
-              My focus is building <span className="text-foreground">reliable, scalable, and
-              maintainable systems</span>, collaborating closely with product, design, and
-              engineering teams. I have hands-on experience with REST APIs, database design,
-              integrations, bug fixing, performance work, and end-to-end feature delivery.
-            </p>
-            <p>
-              I'm always looking to grow technically, contribute to strong teams, and build
-              products that create real impact.
-            </p>
+            <p>{t.about.p4}</p>
           </div>
 
           <div className="md:col-span-2 grid grid-cols-2 gap-4">
-            {stats.map((s, i) => (
+            {t.about.stats.map((s, i) => (
               <motion.div
                 key={s.label}
                 initial={{ opacity: 0, y: 20 }}
