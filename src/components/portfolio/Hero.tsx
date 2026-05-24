@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { useLang } from "@/i18n/LanguageContext";
 
 export function Hero() {
+  const { t } = useLang();
   return (
     <section id="top" className="relative min-h-screen flex items-center pt-24 pb-16 px-6 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
@@ -14,7 +16,7 @@ export function Hero() {
           className="font-mono text-sm text-primary mb-6 flex items-center gap-2"
         >
           <span className="inline-block w-2 h-2 rounded-full bg-primary animate-pulse" />
-          Hi, my name is
+          {t.hero.greeting}
         </motion.p>
 
         <motion.h1
@@ -32,7 +34,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-3 text-3xl sm:text-5xl md:text-6xl font-bold text-muted-foreground leading-[1.05]"
         >
-          I build reliable systems<br className="hidden sm:block" /> for the modern web.
+          {t.hero.tagline1}<br className="hidden sm:block" /> {t.hero.tagline2}
         </motion.h2>
 
         <motion.p
@@ -41,10 +43,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed"
         >
-          Senior Full Stack Engineer with 7+ years building scalable platforms across ERP,
-          healthcare, logistics, and sports. Currently shipping production systems with
-          <span className="text-foreground"> Node.js, NestJS, Next.js</span> and a stack
-          that scales to 80k+ concurrent users.
+          {t.hero.intro}{" "}
+          <span className="text-foreground">{t.hero.introHighlight}</span> {t.hero.introTail}
         </motion.p>
 
         <motion.div
@@ -57,7 +57,7 @@ export function Hero() {
             href="#experience"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90 transition-all glow-primary"
           >
-            View my work
+            {t.hero.viewWork}
             <ArrowDown className="w-4 h-4" />
           </a>
           <a
@@ -85,7 +85,7 @@ export function Hero() {
             <Linkedin className="w-5 h-5" />
           </a>
           <a
-            href="https://github.com/"
+            href="https://github.com/williamrbarbosa"
             target="_blank"
             rel="noreferrer"
             className="hover:text-primary transition-colors"
@@ -94,7 +94,7 @@ export function Hero() {
             <Github className="w-5 h-5" />
           </a>
           <div className="h-px w-16 bg-border" />
-          <span className="font-mono text-xs">Óbidos, Portugal</span>
+          <span className="font-mono text-xs">{t.hero.location}</span>
         </motion.div>
       </div>
     </section>
