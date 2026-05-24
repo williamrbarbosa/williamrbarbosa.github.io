@@ -1,20 +1,26 @@
-import { Mail, Linkedin, MapPin, Github } from "lucide-react";
+import { Mail, Linkedin, MapPin, Github, MessageCircleCheck } from "lucide-react";
 import { useLang } from "@/i18n/LanguageContext";
 
 export function Contact() {
   const { t } = useLang();
   return (
-    <section id="contact" className="py-32 px-6">
-      <div className="max-w-3xl mx-auto text-center">
+    <section id="contact" className="py-24 px-6">
+      <div className="max-w-5xl mx-auto text-center">
         <p className="font-mono text-primary text-sm mb-4">{t.contact.eyebrow}</p>
         <h2 className="text-4xl sm:text-6xl font-bold text-gradient">{t.contact.heading}</h2>
-        <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{t.contact.body}</p>
+        <div className="mt-6 space-y-2">
+          {t.contact.body.map((paragraph, index) => (
+            <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
 
         <a
-          href="mailto:williampgm@gmail.com"
+          href="https://wa.me/351914063379?text=Ol%C3%A1,%20vi%20seu%20portfolio%20e%20gostaria%20de%20conhecer%20melhor,%20podemos%20conversar?"
           className="mt-10 inline-flex items-center gap-3 px-8 py-4 rounded-md bg-primary text-primary-foreground font-medium hover:opacity-90 transition-all glow-primary"
         >
-          <Mail className="w-5 h-5" />
+          <MessageCircleCheck className="w-5 h-5" />
           {t.contact.cta}
         </a>
 

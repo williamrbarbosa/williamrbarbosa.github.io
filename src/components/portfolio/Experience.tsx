@@ -4,13 +4,48 @@ import { SectionHeading } from "./About";
 import { useLang } from "@/i18n/LanguageContext";
 
 const meta = [
-  { company: "Janela Digital", period: { en: "May 2026 — Present", pt: "Mai 2026 — Atual" }, stack: ["Node.js", "React", "TypeScript", "PostgreSQL"] },
-  { company: "MayTech.ia", period: { en: "Aug 2025 — May 2026", pt: "Ago 2025 — Mai 2026" }, stack: ["NestJS", "Next.js", "PostgreSQL", "Redis", "BullMQ", "WhatsApp API"] },
-  { company: "Independent Contractor", period: { en: "Dec 2024 — Aug 2025", pt: "Dez 2024 — Ago 2025" }, stack: ["PHP", "AngularJS", "NestJS", "Next.js", "MySQL", "PostgreSQL", "Redis", "Docker"] },
-  { company: "Rx Redefined", period: { en: "May 2022 — Nov 2024", pt: "Mai 2022 — Nov 2024" }, stack: ["Scrum", "Node.js", "React", "PostgreSQL", "Datadog", "CI/CD"] },
-  { company: "Recebe Digital", period: { en: "Mar 2021 — May 2022", pt: "Mar 2021 — Mai 2022" }, stack: ["Node.js", "NestJS", "PHP", "Angular", "Next.js", "Jest"] },
-  { company: "DFranquias", period: { en: "Oct 2021 — Apr 2022", pt: "Out 2021 — Abr 2022" }, stack: ["PHP", "Symfony", "MySQL", "Docker", "REST"] },
-  { company: "I-SINC", period: { en: "Jan 2019 — Nov 2021", pt: "Jan 2019 — Nov 2021" }, stack: ["Node.js", "PHP", "Angular", "RabbitMQ", "AWS", "Docker"] },
+  {
+    company: "Janela Digital",
+    url: "https://www.linkedin.com/company/janela-digital",
+    period: { en: "May 2026 — Present", pt: "Mai 2026 — Atual" },
+    stack: ["Node.js", "React", "TypeScript", "PostgreSQL"],
+  },
+  {
+    company: "MayTech.ia",
+    url: "https://www.linkedin.com/company/106960496/",
+    period: { en: "Aug 2025 — May 2026", pt: "Ago 2025 — Mai 2026" },
+    stack: ["NestJS", "Next.js", "PostgreSQL", "Redis", "BullMQ", "WhatsApp API"],
+  },
+  {
+    company: "Independent Contractor",
+    url: "https://www.linkedin.com/in/williamrbarbosa/",
+    period: { en: "Dec 2024 — Aug 2025", pt: "Dez 2024 — Ago 2025" },
+    stack: ["PHP", "AngularJS", "NestJS", "Next.js", "MySQL", "PostgreSQL", "Redis", "Docker"],
+  },
+  {
+    company: "Rx Redefined",
+    url: "https://www.linkedin.com/company/34745071/",
+    period: { en: "May 2022 — Nov 2024", pt: "Mai 2022 — Nov 2024" },
+    stack: ["Scrum", "Node.js", "React", "PostgreSQL", "Datadog", "CI/CD"],
+  },
+  {
+    company: "Recebe Digital",
+    url: "https://recebedigital.com.br/#/home",
+    period: { en: "Mar 2021 — May 2022", pt: "Mar 2021 — Mai 2022" },
+    stack: ["Node.js", "NestJS", "PHP", "Angular", "Next.js", "Jest"],
+  },
+  {
+    company: "DFranquias",
+    url: "https://www.linkedin.com/company/dfranquias-group/posts/?feedView=all",
+    period: { en: "Oct 2021 — Apr 2022", pt: "Out 2021 — Abr 2022" },
+    stack: ["PHP", "Symfony", "MySQL", "Docker", "REST"],
+  },
+  {
+    company: "I-SINC",
+    url: "https://www.linkedin.com/company/isincoficial",
+    period: { en: "Jan 2019 — Nov 2021", pt: "Jan 2019 — Nov 2021" },
+    stack: ["Node.js", "PHP", "Angular", "RabbitMQ", "AWS", "Docker"],
+  },
 ];
 
 export function Experience() {
@@ -55,7 +90,10 @@ export function Experience() {
               transition={{ duration: 0.25 }}
             >
               <h3 className="text-xl font-display font-semibold">
-                {j.role} <span className="text-primary">@ {m.company}</span>
+                {j.role}{" "}
+                <a href={m.url} className="text-primary" target="_blank" rel="noopener noreferrer">
+                  @ {m.company}
+                </a>
               </h3>
               <p className="font-mono text-sm text-muted-foreground mt-1">
                 {m.period[lang]} · {j.location}

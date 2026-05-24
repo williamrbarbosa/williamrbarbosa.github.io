@@ -3,10 +3,34 @@ import { SectionHeading } from "./About";
 import { useLang } from "@/i18n/LanguageContext";
 
 const techGroups = [
-  ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "Angular", "Sass", "Bootstrap", "jQuery", "Axios"],
+  [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "Tailwind CSS",
+    "Angular",
+    "Sass",
+    "Bootstrap",
+    "jQuery",
+    "Axios",
+  ],
   ["Node.js", "NestJS", "PHP", "Laravel", "Symfony", "OAuth", "JWT", "RabbitMQ", "BullMQ"],
   ["PostgreSQL", "MySQL", "MariaDB", "Redis", "MongoDB", "SQL Server", "SQLite"],
-  ["AWS EC2", "AWS ECS", "AWS EKS", "AWS Lambda", "AWS RDS", "AWS SQS / SNS", "Docker", "Nginx", "PM2", "GitHub Actions", "GitLab CI", "Linux"],
+  [
+    "AWS EC2",
+    "AWS ECS",
+    "AWS EKS",
+    "AWS Lambda",
+    "AWS RDS",
+    "AWS SQS / SNS",
+    "Docker",
+    "Nginx",
+    "PM2",
+    "GitHub Actions",
+    "GitLab CI",
+    "Linux",
+  ],
   ["Jest", "Playwright", "Supertest", "Swagger", "ESLint", "Prettier", "Husky"],
   ["Sentry", "Datadog", "AWS CloudWatch"],
 ];

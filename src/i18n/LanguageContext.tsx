@@ -5,17 +5,23 @@ export type Lang = "en" | "pt";
 type Dict = typeof en;
 
 const en = {
-  nav: { about: "About", skills: "Skills", experience: "Experience", contact: "Contact", cta: "Get in touch" },
+  nav: {
+    about: "About",
+    skills: "Skills",
+    experience: "Experience",
+    contact: "Contact",
+    cta: "Get in touch",
+  },
   hero: {
-    greeting: "Hi, my name is",
-    tagline1: "I build reliable systems",
+    greeting: "Hi, I am",
+    tagline1: "Building reliable systems",
     tagline2: "for the modern web.",
     intro:
-      "Senior Full Stack Engineer with 7+ years building scalable platforms across ERP, healthcare, logistics, and sports. Currently shipping production systems with",
-    introHighlight: "Node.js, NestJS, Next.js",
-    introTail: "and a stack that scales to 80k+ concurrent users.",
+      "Senior Full Stack Engineer with 10+ years building scalable platforms. Currently shipping production systems with",
+    introHighlight: "Node.js, NestJS, React, Next.js",
+    introTail: ".",
     viewWork: "View my work",
-    location: "Óbidos, Portugal",
+    location: "Leiria, Portugal",
   },
   about: {
     heading: "About me",
@@ -57,10 +63,13 @@ const en = {
   },
   contact: {
     eyebrow: "04. What's next?",
-    heading: "Let's build something.",
-    body: "I'm open to new opportunities, collaborations, or just a good engineering chat. The fastest way to reach me is by email — I'll get back to you soon.",
+    heading: "Get in touch",
+    body: [
+      "Building scalable products, backend systems and high-traffic applications is what I enjoy most.",
+      "If you're hiring, building something ambitious, or just want to exchange ideas about software architecture, distributed systems or product engineering — feel free to reach out.",
+    ],
     cta: "Say hello",
-    location: "Óbidos, Portugal",
+    location: "Leiria, Portugal",
     footer: "Designed & built by William Barbosa",
   },
   jobs: [
@@ -143,17 +152,23 @@ const en = {
 };
 
 const pt: Dict = {
-  nav: { about: "Sobre", skills: "Skills", experience: "Experiência", contact: "Contato", cta: "Falar comigo" },
+  nav: {
+    about: "Sobre",
+    skills: "Skills",
+    experience: "Experiência",
+    contact: "Contato",
+    cta: "Falar comigo",
+  },
   hero: {
-    greeting: "Olá, meu nome é",
-    tagline1: "Eu construo sistemas confiáveis",
+    greeting: "Olá, eu sou",
+    tagline1: "Construindo sistemas confiáveis",
     tagline2: "para a web moderna.",
     intro:
-      "Engenheiro Full Stack Sênior com mais de 7 anos construindo plataformas escaláveis em ERP, saúde, logística e esportes. Atualmente entregando sistemas em produção com",
-    introHighlight: "Node.js, NestJS, Next.js",
-    introTail: "e um stack que escala para mais de 80k usuários simultâneos.",
+      "Engenheiro Full Stack Sênior com mais de 10 anos de experiência construindo plataformas escaláveis. Atualmente entregando sistemas em produção com",
+    introHighlight: "Node.js, NestJS, React, Next.js",
+    introTail: ".",
     viewWork: "Ver meu trabalho",
-    location: "Óbidos, Portugal",
+    location: "Leiria, Portugal",
   },
   about: {
     heading: "Sobre mim",
@@ -195,10 +210,13 @@ const pt: Dict = {
   },
   contact: {
     eyebrow: "04. E agora?",
-    heading: "Vamos construir algo.",
-    body: "Estou aberto a novas oportunidades, colaborações ou simplesmente um bom papo de engenharia. O caminho mais rápido é por email — respondo em breve.",
+    heading: "Entre em contato.",
+    body: [
+      "O que mais me dá prazer é desenvolver produtos escaláveis, sistemas de back-end e aplicações de alto tráfego.",
+      "Se você está contratando, construindo algo ambicioso ou simplesmente quer trocar ideias sobre arquitetura de software, sistemas distribuídos ou engenharia de produto — sinta-se à vontade para entrar em contato.",
+    ],
     cta: "Diga oi",
-    location: "Óbidos, Portugal",
+    location: "Leiria, Portugal",
     footer: "Projetado e desenvolvido por William Barbosa",
   },
   jobs: [

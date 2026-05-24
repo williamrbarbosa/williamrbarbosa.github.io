@@ -11,11 +11,15 @@ export function About() {
         <div className="grid md:grid-cols-5 gap-12 mt-12">
           <div className="md:col-span-3 space-y-5 text-muted-foreground leading-relaxed">
             <p>
-              {t.about.p1[0]}<span className="text-foreground">{t.about.p1[1]}</span>{t.about.p1[2]}
+              {t.about.p1[0]}
+              <span className="text-foreground">{t.about.p1[1]}</span>
+              {t.about.p1[2]}
             </p>
             <p>{t.about.p2}</p>
             <p>
-              {t.about.p3[0]}<span className="text-foreground">{t.about.p3[1]}</span>{t.about.p3[2]}
+              {t.about.p3[0]}
+              <span className="text-foreground">{t.about.p3[1]}</span>
+              {t.about.p3[2]}
             </p>
             <p>{t.about.p4}</p>
           </div>

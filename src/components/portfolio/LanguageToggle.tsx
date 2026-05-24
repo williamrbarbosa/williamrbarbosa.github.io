@@ -9,8 +9,10 @@ export function LanguageToggle() {
         <button
           key={o}
           onClick={() => setLang(o)}
-          className={`px-2.5 py-1 rounded transition-colors ${
-            lang === o ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground"
+          className={`px-2.5 py-1 rounded transition-colors cursor-pointer ${
+            lang === o
+              ? "bg-primary text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground"
           }`}
           aria-pressed={lang === o}
         >
